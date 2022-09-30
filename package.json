@@ -1,0 +1,8 @@
+{
+  "name": "boilerplate-clasp",
+  "version": "1.0.0",
+  "author": "Osamu Takiya <takiya@toran.sakura.ne.jp>",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": "https://nikukyugamer@github.com/nikukyugamer/boilerplate-clasp.git"
+}
