@@ -2,6 +2,11 @@
   "name": "boilerplate-clasp",
   "version": "1.0.0",
   "author": "Osamu Takiya <takiya@toran.sakura.ne.jp>",
+  "devDependencies": {
+    "@google/clasp": "^2.4.2",
+    "@types/google-apps-script": "^1.0.55",
+    "typescript": "^4.8.4"
+  },
   "license": "MIT",
   "main": "index.js",
   "repository": "https://nikukyugamer@github.com/nikukyugamer/boilerplate-clasp.git"
