@@ -9,5 +9,9 @@
   },
   "license": "MIT",
   "main": "index.js",
-  "repository": "https://nikukyugamer@github.com/nikukyugamer/boilerplate-clasp.git"
+  "repository": "https://nikukyugamer@github.com/nikukyugamer/boilerplate-clasp.git",
+  "scripts": {
+    "clasp:push": "clasp push",
+    "clasp:watch": "clasp push --watch"
+  }
 }
