@@ -52,7 +52,9 @@ $ clasp clone スクリプトID
 
 ## 7. $ clasp push してみる
 - 適当にコードを変えて `$ clasp push` してみる
-- Webページ側で確認し、変更が反映されていれば OK
+  - Webページ側で確認し、変更が反映されていれば OK
+- `Google Apps Script API` が「オフ」になっているとエラーになる
+  - https://script.google.com/home/usersettings に行って「ON」にする
 
 # 注意点など
 
