@@ -1,21 +1,21 @@
 # Clasp ボイラープレート
 
-## 1. $ clasp login
+## 1. $ npx clasp login
 Google アカウントにてログインをして、Clasp 用の権限を得る。
 
 ```bash
-$ clasp login
+$ npx clasp login
 ```
 
 これにより、`~/.clasprc.json` が作成される。
 
-## 2. $ clasp clone
-既存のプロジェクトを持ってくるために `$ clasp clone` する。
+## 2. $ npx clasp clone
+既存のプロジェクトを持ってくるために `$ npx clasp clone` する。
 
-なお、スプレッドシート の新規作成や App Script の新規作成を行うには `$ clasp create` を実行する（実際はほとんどやる機会はないと思う）。
+なお、スプレッドシート の新規作成や App Script の新規作成を行うには `$ npx clasp create` を実行する（実際はほとんどやる機会はないと思う）。
 
 ```bash
-$ clasp clone スクリプトID
+$ npx clasp clone スクリプトID
 ```
 
 このコマンドを実行すると以下の 2つ のファイルが作成される。
@@ -31,7 +31,7 @@ $ clasp clone スクリプトID
 - `appscript.json` は触る必要はない
 
 ## 4. スクリプトの拡張子を .ts に統一する
-- `.js` と `.ts` の拡張子が混在している時は `.js` は `$ clasp push` の対象外になる
+- `.js` と `.ts` の拡張子が混在している時は `.js` は `$ npx clasp push` の対象外になる
 - `.ts` に統一する
 
 ## 5. tsconfig.json を追加
@@ -50,8 +50,8 @@ $ clasp clone スクリプトID
 - `.claspignore` を必要に応じて設定する。
 - ホワイトリスト形式なので、サブディレクトリを新たに作った際には `.claspignore` に追記する必要がある
 
-## 7. $ clasp push してみる
-- 適当にコードを変えて `$ clasp push` してみる
+## 7. $ npx clasp push してみる
+- 適当にコードを変えて `$ npx clasp push` してみる
   - Webページ側で確認し、変更が反映されていれば OK
 - `Google Apps Script API` が「オフ」になっているとエラーになる
   - https://script.google.com/home/usersettings に行って「ON」にする
@@ -75,7 +75,7 @@ $ clasp clone スクリプトID
     - Clasp の仕様上、複数のディレクトリを作ってプロジェクトを分けることになる
 
 ```bash
-$ clasp --help
+$ npx clasp --help
 Usage: clasp <command> [options]
 
 clasp - The Apps Script CLI
@@ -114,17 +114,19 @@ function bar() {
 
 ## ログ出力の方法
 - `Logger.log('foobar')`
+- `console.log('foobar')`
 
 ## 変更を検知して自動で push をさせる方法
+たまにうまくいかないことがある。
 
 ```bash
-$ clasp push --watch
+$ npx clasp push --watch
 ```
 
 ## Webコンソールをリロードしなくても clasp push は反映されているか？
 - されている
 - 同じメソッドの実行を繰り返しながら開発しているようなときは、わざわざリロードしなくていい
-  - `$ clasp push --watch` を実行させながらトライアンドエラーをサクサク繰り返せる
+  - `$ npx clasp push --watch` を実行させながらトライアンドエラーをサクサク繰り返せる
 
 ## package.json の "scripts" をうまく使う
 - 例えば `.clasprc.json` や `.clasp.json` を使い分けるとき
