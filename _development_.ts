@@ -1,4 +1,7 @@
 function development() {
-  Foo.greeting('development')
-  Hoge.greeting('development')
+  const foo = new Foo('development')
+  const hoge = new Hoge('development')
+
+  foo.greeting()
+  hoge.greeting()
 }
