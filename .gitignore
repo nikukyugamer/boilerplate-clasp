@@ -1,6 +1,7 @@
 .vscode/
 tmp/
 .clasp.json
+*.js
 
 # Logs
 logs
