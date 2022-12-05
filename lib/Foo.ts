@@ -6,6 +6,8 @@ class Foo {
   }
 
   greeting() {
+    console.log(Constants.TARGET_URL)
+
     if (this.isProduction()) {
       console.log('Foo! Hello, production environment! Hello, Foo World!')
     } else if (this.isDevelopment()) {
