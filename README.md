@@ -62,6 +62,9 @@ $ npx clasp clone スクリプトID
 - `Google Apps Script API` が「オフ」になっているとエラーになる
   - https://script.google.com/home/usersettings に行って「ON」にする
 
+## C-6. 安定したらこの README は削除 or 移動して本来の README を書く
+- 開発サイクルが安定したらこの README を本来の README に取り替える
+
 # D. Webアプリ（Webサイト）として表示したい場合
 以下は Vite + React の場合であり、他のフレームワークやライブラリを用いる場合は変更が必要になる。
 
@@ -91,6 +94,9 @@ $ npx clasp clone スクリプトID
 - あとは普通に開発する
 - `src/doGet.js` が Apps 側のエントリポイントになる
 - Apps 側の `index.html` は `dist/index.html` が常にビルドされるので考慮不要
+
+## D-7. 安定したらこの README は削除 or 移動して本来の README を書く
+- 開発サイクルが安定したらこの README を本来の README に取り替える
 
 # 注意点など
 
