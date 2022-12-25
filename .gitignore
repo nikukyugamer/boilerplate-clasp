@@ -1,5 +1,6 @@
 .vscode/
 tmp/
+.clasprc.json
 .clasp.json
 *.js
 
