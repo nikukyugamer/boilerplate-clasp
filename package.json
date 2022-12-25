@@ -23,6 +23,7 @@
   "repository": "https://nikukyugamer@github.com/nikukyugamer/boilerplate-clasp.git",
   "scripts": {
     "build": "tsc && vite build",
+    "c": "npx clasp -A .clasprc.json",
     "clasp:clone": "clasp -A .clasprc.json clone",
     "clasp:deploy": "clasp -A .clasprc.json deploy --deploymentId $CLASP_DEPLOYMENT_ID",
     "clasp:deployments": "clasp -A .clasprc.json deployments",
