@@ -27,7 +27,7 @@
     "clasp:deploy": "clasp -A .clasprc.json deploy --deploymentId $CLASP_DEPLOYMENT_ID",
     "clasp:deployments": "clasp -A .clasprc.json deployments",
     "clasp:push": "clasp -A .clasprc.json push",
-    "clasp:release": "cp src/doGet.js dist/doGet.js && clasp -A .clasprc.json push && clasp -A .clasprc.json deploy --deploymentId $CLASP_DEPLOYMENT_ID",
+    "clasp:release": "tsc && vite build && cp src/doGet.js dist/doGet.js && cp appsscript.json dist/appsscript.json && clasp -A .clasprc.json push && clasp -A .clasprc.json deploy --deploymentId $CLASP_DEPLOYMENT_ID",
     "clasp:watch": "clasp -A .clasprc.json push --watch",
     "dev": "vite",
     "preview": "vite preview"
