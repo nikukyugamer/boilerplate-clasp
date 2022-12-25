@@ -1,22 +1,14 @@
 # Clasp ボイラープレート
-すでに `.clasprc.json` が存在する場合（パターン A）とそうでない場合（バターン B）により、手順が分かれる。
+- まずは `$ yarn install` する
+- すでに `.clasprc.json` が存在する場合（パターン A）とそうでない場合（バターン B）により、手順が分かれる
 
 ## A. すでに `.clasprc.json` が存在する場合
 - 一般論として `~/.clasprc.json` をそのまま放置しておくと上書きリスク等があるので、適宜リネームしておいた方がいい
   - 個人的なリネーム規則は `~/.clasprc.json` を `~/.clasprc.foo@example.com.json` である
 
-## A-1. `package.json` の `scripts` に以下を追記する
-- `/path/to/your.clasprc.json` が事前に取得済みの `.clasprc.json` ファイル
-  - プロジェクトルートに `.clasprc.json` で置くのがポータビリティが高い
-    - `.gitignore` に登録済み
-- 新たに clasp コマンドを実行する際には全てに `-A` オプションを追加する
-
-```json
-  "scripts": {
-    "clasp:push": "clasp -A /path/to/your.clasprc.json push",
-    "clasp:watch": "clasp -A /path/to/your.clasprc.json push --watch"
-  }
-```
+## A-1. `.clasprc.json` をプロジェクトルートに置く
+- 使いたい `.clasprc.json` をプロジェクトルートに置く
+  - `.gitignore` に登録済み
 
 ## B. `.clasprc.json` を初めて作成する場合
 
@@ -29,7 +21,11 @@ $ npx clasp login
 
 これにより、`~/.clasprc.json` が作成される。
 
-## C. 以下は A. と B. で共通
+## B-2. `.clasprc.json` をプロジェクトルートに置く
+- `.clasprc.json` をプロジェクトルートに置く
+  - `.gitignore` に登録済み
+
+## C. 以下は A. と B. で共通（Webアプリの場合はここでなく D. へ）
 
 ## C-1. $ npx clasp clone
 既存のプロジェクトを持ってくるために `$ npx clasp clone` する。
@@ -53,17 +49,51 @@ $ npx clasp clone スクリプトID
 
 ## C-3. .claspignore を設定する
 - `.claspignore` に必要に応じて追記する
+  - Webページを公開しないならば `src/` 配下は不要
+- 併せてファイル自体も削除する
 
-## C-4. $ npx clasp push してみる
+## C-5. package.json を編集する
+- `name`
+- `repository`
+
+## C-5. $ npx clasp push してみる
 - 適当にコードを変えて `$ npx clasp push` してみる
   - Webのエディタ側で確認し、変更が反映されていれば OK
 - `Google Apps Script API` が「オフ」になっているとエラーになる
   - https://script.google.com/home/usersettings に行って「ON」にする
 
+# D. Webアプリ（Webサイト）として表示したい場合
+以下は Vite + React の場合であり、他のフレームワークやライブラリを用いる場合は変更が必要になる。
+
+## D-1. .clasp.json を編集する
+- `rootDir` を `dist` に変更する
+
+```json
+  "rootDir": "/path/to/repo/dist"
+```
+
+## D-2. 環境変数 CLASP_DEPLOYMENT_ID を定義する
+- `package.json` 内の `scripts` で用いるため
+
+## D-3. .claspignore を設定する
+- `.claspignore` に必要に応じて追記する
+  - スプレッドシート用などならば `lib/` 配下は不要
+- 併せてファイル自体も削除する
+
+## D-4. package.json を編集する
+- `name`
+- `repository`
+
+## D-5. 開発する
+- あとは普通に開発する
+- `src/doGet.js` が Apps 側のエントリポイントになる
+- Apps 側の `index.html` は `dist/index.html` が常にビルドされるので考慮不要
+
 # 注意点など
 
-## みんな Clasp を使うこと
+## 開発時はみんなが Clasp を使うこと
 - Clasp を用いるプロジェクトではみんな Clasp を使うこと
+  - Apps 側 はいわばデプロイ場所なので、手でいじるところではない
 
 ## ローカルのルートディレクトリには余計なファイルが多く存在することになる lib/ にスクリプト本体を入れるとよい
 - 実行は `_main_.ts` 経由で行う
@@ -72,25 +102,6 @@ $ npx clasp clone スクリプトID
     - GAS上の「並び」で一番上に来るから
     - 最初だけにアンダースコアを入れると未使用ファイル的な印象を与えてしまうから最後にも入れる
   - 実態はすべて `lib/` に入れる
-
-## .clasprc.json や .clasp.json を使い分ける方法
-- clasp コマンド ではオプションを指定することで `.clasprc.json` や `.clasp.json` を変更できる
-  - 複数アカウントや複数プロジェクトを扱うことも可能
-    - Clasp の仕様上、複数のディレクトリを作ってプロジェクトを分けることになる
-
-```bash
-$ npx clasp --help
-Usage: clasp <command> [options]
-
-clasp - The Apps Script CLI
-
-Options:
-  -v, --version                               output the current version
-  -A, --auth <file>                           path to an auth file or a folder with a '.clasprc.json' file.
-  -I, --ignore <file>                         path to an ignore file or a folder with a '.claspignore' file.
-  -P, --project <file>                        path to a project file or to a folder with a '.clasp.json' file.
-  -h, --help                                  display help for command
-```
 
 ## 複数ファイルを用いて import / export 的なことをする場合にはどうしたらいいか？
 - 全体を `namespace Hogehoge {}` でくくる
@@ -145,3 +156,23 @@ $ npx clasp push --watch
 - TypeScript の範囲で担保するのが現実的
 - 実挙動に関しても、現実的にはトライアンドエラーを高速に回すプリントデバッグがいい
   - それで辛い場合はそもそも GAS の範疇を超えている可能性が高い
+- ただし Webアプリ の場合はそもそも独立しているので可能
+
+## .clasprc.json や .clasp.json を使い分ける方法
+- clasp コマンド ではオプションを指定することで `.clasprc.json` や `.clasp.json` を変更できる
+  - 複数アカウントや複数プロジェクトを扱うことも可能
+    - Clasp の仕様上、複数のディレクトリを作ってプロジェクトを分けることになる
+
+```bash
+$ npx clasp --help
+Usage: clasp <command> [options]
+
+clasp - The Apps Script CLI
+
+Options:
+  -v, --version                               output the current version
+  -A, --auth <file>                           path to an auth file or a folder with a '.clasprc.json' file.
+  -I, --ignore <file>                         path to an ignore file or a folder with a '.claspignore' file.
+  -P, --project <file>                        path to a project file or to a folder with a '.clasp.json' file.
+  -h, --help                                  display help for command
+```

@@ -1,17 +1,35 @@
 {
   "name": "boilerplate-clasp",
+  "description": "",
   "version": "1.0.0",
   "author": "Osamu Takiya <takiya@toran.sakura.ne.jp>",
+  "bugs": {},
   "devDependencies": {
     "@google/clasp": "2.4.2",
     "@types/google-apps-script": "1.0.56",
-    "typescript": "4.9.4"
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "4.9.4",
+    "vite": "^4.0.0",
+    "vite-plugin-singlefile": "^0.13.2"
   },
+  "homepage": "",
+  "keywords": [],
   "license": "MIT",
-  "main": "index.js",
+  "main": "app.js",
   "repository": "https://nikukyugamer@github.com/nikukyugamer/boilerplate-clasp.git",
   "scripts": {
-    "clasp:push": "clasp push",
-    "clasp:watch": "clasp push --watch"
+    "build": "tsc && vite build",
+    "clasp:clone": "clasp -A .clasprc.json clone",
+    "clasp:deploy": "clasp -A .clasprc.json deploy --deploymentId $CLASP_DEPLOYMENT_ID",
+    "clasp:deployments": "clasp -A .clasprc.json deployments",
+    "clasp:push": "clasp -A .clasprc.json push",
+    "clasp:release": "cp src/doGet.js dist/doGet.js && clasp -A .clasprc.json push && clasp -A .clasprc.json deploy --deploymentId $CLASP_DEPLOYMENT_ID",
+    "clasp:watch": "clasp -A .clasprc.json push --watch",
+    "dev": "vite",
+    "preview": "vite preview"
   }
 }
