@@ -84,7 +84,10 @@ $ npx clasp clone スクリプトID
 - `name`
 - `repository`
 
-## D-5. 開発する
+## D-5. appscript.json を dist/ に移動する
+- 更新があった場合には dist/ に毎回移動する必要がある
+
+## D-6. 開発する
 - あとは普通に開発する
 - `src/doGet.js` が Apps 側のエントリポイントになる
 - Apps 側の `index.html` は `dist/index.html` が常にビルドされるので考慮不要
