@@ -1,7 +1,27 @@
 # Clasp ボイラープレート
+すでに `.clasprc.json` が存在する場合（パターン A）とそうでない場合（バターン B）により、手順が分かれる。
 
-## 1. $ npx clasp login
-Google アカウントにてログインをして、Clasp 用の権限を得る。
+## A. すでに `.clasprc.json` が存在する場合
+- 一般論として `~/.clasprc.json` をそのまま放置しておくと上書きリスク等があるので、適宜リネームしておいた方がいい
+  - 個人的なリネーム規則は `~/.clasprc.json` を `~/.clasprc.foo@example.com.json` である
+
+## A-1. `package.json` の `scripts` に以下を追記する
+- `/path/to/your.clasprc.json` が事前に取得済みの `.clasprc.json` ファイル
+  - プロジェクトルートに `.clasprc.json` で置くのがポータビリティが高い
+    - `.gitignore` に登録済み
+- 新たに clasp コマンドを実行する際には全てに `-A` オプションを追加する
+
+```json
+  "scripts": {
+    "clasp:push": "clasp -A /path/to/your.clasprc.json push",
+    "clasp:watch": "clasp -A /path/to/your.clasprc.json push --watch"
+  }
+```
+
+## B. `.clasprc.json` を初めて作成する場合
+
+## B-1. $ npx clasp login
+Google アカウントにてログインをして、Clasp 用の権限ファイルを得る。すでに存在する場合は上書きされてしまうので注意する。
 
 ```bash
 $ npx clasp login
@@ -9,50 +29,34 @@ $ npx clasp login
 
 これにより、`~/.clasprc.json` が作成される。
 
-## 2. $ npx clasp clone
+## C. 以下は A. と B. で共通
+
+## C-1. $ npx clasp clone
 既存のプロジェクトを持ってくるために `$ npx clasp clone` する。
 
-なお、スプレッドシート の新規作成や App Script の新規作成を行うには `$ npx clasp create` を実行する（実際はほとんどやる機会はないと思う）。
+なお、スプレッドシート の新規作成や App Script の新規作成を行うには `$ npx clasp create` を実行する。ただし、実際はほとんどやる機会はないと思う。
 
 ```bash
 $ npx clasp clone スクリプトID
 ```
 
-このコマンドを実行すると以下の 2つ のファイルが作成される。
+`npx clasp` を実行すると以下の 2つ のファイルが作成される。これらのファイルは触る必要はない。
 
 - `.clasp.json`
 - `appsscript.json`
 
 「スクリプトID」はスプレッドシートの URL から取得できる。
 
-## 3. 得られた 2つ のファイルの取り扱いについて
-- `.clasp.json` は `.gitignore` する
-  - 開発者ごとの情報が入るし、秘匿情報も入るから
-- `appscript.json` は触る必要はない
-
-## 4. スクリプトの拡張子を .ts に統一する
+## C-2. スクリプトの拡張子を .ts に統一する
 - `.js` と `.ts` の拡張子が混在している時は `.js` は `$ npx clasp push` の対象外になる
 - `.ts` に統一する
 
-## 5. tsconfig.json を追加
-公式ドキュメントどおりに最低限の `tsconfig.json` を追加する。
+## C-3. .claspignore を設定する
+- `.claspignore` に必要に応じて追記する
 
-```json
-{
-  "compilerOptions": {
-    "lib": ["esnext"],
-    "experimentalDecorators": true
-  }
-}
-```
-
-## 6. .claspignore を設定する
-- `.claspignore` を必要に応じて設定する。
-- ホワイトリスト形式なので、サブディレクトリを新たに作った際には `.claspignore` に追記する必要がある
-
-## 7. $ npx clasp push してみる
+## C-4. $ npx clasp push してみる
 - 適当にコードを変えて `$ npx clasp push` してみる
-  - Webページ側で確認し、変更が反映されていれば OK
+  - Webのエディタ側で確認し、変更が反映されていれば OK
 - `Google Apps Script API` が「オフ」になっているとエラーになる
   - https://script.google.com/home/usersettings に行って「ON」にする
 
@@ -61,7 +65,7 @@ $ npx clasp clone スクリプトID
 ## みんな Clasp を使うこと
 - Clasp を用いるプロジェクトではみんな Clasp を使うこと
 
-## ルートは余計なファイルが入るので lib/ にスクリプトを入れるとよい
+## ローカルのルートディレクトリには余計なファイルが多く存在することになる lib/ にスクリプト本体を入れるとよい
 - 実行は `_main_.ts` 経由で行う
   - ファイル名の最初と最後にアンダースコアを入れるのは以下の理由による
     - 開発環境上の「並び」で一番上に来るから
@@ -113,11 +117,10 @@ function bar() {
 ```
 
 ## ログ出力の方法
-- `Logger.log('foobar')`
 - `console.log('foobar')`
 
 ## 変更を検知して自動で push をさせる方法
-たまにうまくいかないことがある。
+たまにうまくいかないことがあるので、毎回 push するのが確実ではある。
 
 ```bash
 $ npx clasp push --watch
@@ -139,4 +142,6 @@ $ npx clasp push --watch
 
 ## テストは書けない
 - 場合によってはガリガリの手動で書くことはできる
-- 現実的には、トライアンドエラーを高速に回すプリントデバッグがいい
+- TypeScript の範囲で担保するのが現実的
+- 実挙動に関しても、現実的にはトライアンドエラーを高速に回すプリントデバッグがいい
+  - それで辛い場合はそもそも GAS の範疇を超えている可能性が高い
