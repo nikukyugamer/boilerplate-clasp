@@ -1,3 +1,8 @@
+# Google Apps Script で一般的にやっておいたほうがいいこと
+- `appsscript.json` を見えるようにしておくこと
+
+[![Image from Gyazo](https://i.gyazo.com/e890e15b4bea0ce95023bf5d238514ab.png)](https://gyazo.com/e890e15b4bea0ce95023bf5d238514ab)
+
 # Clasp ボイラープレート
 - まずは `$ yarn install` する
 - すでに `.clasprc.json` が存在する場合（パターン A）とそうでない場合（バターン B）により、手順が分かれる
