@@ -34,12 +34,12 @@
   "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
   "eslint.packageManager": "yarn",
-  "prettier.configPath": "/PATH/TO/REPOSITORY/.prettierrc.js",
-  "prettier.ignorePath": "/PATH/TO/REPOSITORY/.prettierignore",
+  "prettier.configPath": ".prettierrc.js",
+  "prettier.ignorePath": ".prettierignore",
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.withNodeModules": true,
   "stylelint.packageManager": "yarn",
   "stylelint.validate": ["css", "less", "postcss", "scss"],
-  "stylelint.configFile": "/PATH/TO/REPOSITORY/stylelint.config.js"
+  "stylelint.configFile": "stylelint.config.js"
 }
