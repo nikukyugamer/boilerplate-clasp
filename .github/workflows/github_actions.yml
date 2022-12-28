@@ -1,0 +1,57 @@
+name: boilerplate-clasp
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+jobs:
+  eiyuden_crm_frontend:
+    name: boilerplate-clasp
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - name: （デバッグ用）Payload (GITHUB_EVENT_PATH) を確認する
+        run: |
+          cat $GITHUB_EVENT_PATH
+      - name: （デバッグ用）inputs と secrets と github と env を確認する
+        run: |
+          echo '${{ toJson(inputs) }}'
+          echo '${{ toJson(secrets) }}'
+          echo '${{ toJson(github) }}'
+          echo '${{ toJson(env) }}'
+      - name: （デバッグ用）env を確認する
+        run: |
+          echo '${{ toJson(env) }}'
+      - name: コードをチェックアウトする
+        uses: actions/checkout@v3
+      - name: Node.js のセットアップを行う
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.node-version'
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Node のパッケージをインストールする
+        run: |
+          yarn install
+      - name: （デバッグ用）各種バージョンを確認する
+        run: |
+          echo "gh version: $(gh version)"
+          echo "docker --version: $(docker --version)"
+          echo "docker-compose --version: $(docker-compose --version)"
+          echo "node --version: $(node --version)"
+          echo "npm --version: $(npm --version)"
+          echo "npm list: $(npm list)"
+          echo "npm list -g: $(npm list -g)"
+          echo "yarn --version: $(yarn --version)
+          echo "npx --version: $(npx --version)
+      - name: TypeScript をコンパイルする
+        run: |
+          npx tsc
