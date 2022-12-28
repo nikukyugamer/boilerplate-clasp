@@ -6,7 +6,9 @@ class UniteRowHeight {
     const spreadsheetId = '1234567890aBcDeFgHi'
     const worksheetName = 'ユーザー名'
     const spreadsheet = SpreadsheetApp.openById(spreadsheetId)
-    const worksheet = spreadsheet.getSheetByName(worksheetName)
+    const worksheet = spreadsheet.getSheetByName(
+      worksheetName
+    ) as GoogleAppsScript.Spreadsheet.Sheet
 
     const defaultRowSize = 21
 
@@ -17,10 +19,11 @@ class UniteRowHeight {
           sheetId: worksheet.getSheetId(),
           startIndex: 1, // 2行目からが対象になる
           // endIndex: 100, // 書かない場合には全行が対象になる
-          dimension: 'ROWS'
+          dimension: 'ROWS',
         },
-        fields: 'pixelSize'
-    }}
+        fields: 'pixelSize',
+      },
+    }
 
     // @ts-ignore
     Sheets.Spreadsheets.batchUpdate({ requests: requests }, spreadsheet.getId())

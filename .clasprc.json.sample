@@ -1,0 +1,1 @@
+{"token":{"access_token":"aaa","scope":"bbb","token_type":"ccc","id_token":"ddd","expiry_date":123,"refresh_token":"eee"},"oauth2ClientSettings":{"clientId":"fff","clientSecret":"ggg","redirectUri":"http://localhost"},"isLocalCreds":false}
