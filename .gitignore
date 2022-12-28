@@ -4,7 +4,10 @@ tmp/
 .clasprc.json
 .clasp.json
 *.js
+
 !src/doGet.js
+!.prettierrc.js
+!.eslintrc.js
 
 # Vite デフォルト
 # Logs

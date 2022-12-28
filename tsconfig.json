@@ -13,10 +13,10 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "experimentalDecorators": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "google_apps_script"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
