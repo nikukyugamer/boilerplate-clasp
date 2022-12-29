@@ -8,6 +8,5 @@ dist/*
 !index.html
 !doGet.js
 tmp/*
-# lib/*
-# src/*
-!lib/*.ts
+!**/*.ts
+**/*.d.ts
