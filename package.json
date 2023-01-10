@@ -43,6 +43,6 @@
     "c:watch": "clasp -A .clasprc.json push --watch",
     "dev": "vite",
     "preview": "vite preview",
-    "release": "tsc && vite build && cp src/doGet.js dist/doGet.js && cp appsscript.json dist/appsscript.json && clasp -A .clasprc.json push && clasp -A .clasprc.json deploy --deploymentId $CLASP_DEPLOYMENT_ID"
+    "release": "tsc && vite build && cp src/doGet.js dist/doGet.js && cp appsscript.json dist/appsscript.json && cp 404.html dist/404.html && clasp -A .clasprc.json push && clasp -A .clasprc.json deploy --deploymentId $CLASP_DEPLOYMENT_ID"
   }
 }
