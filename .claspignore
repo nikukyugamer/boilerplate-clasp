@@ -6,6 +6,7 @@
 # 以下はユーザー設定用に作成した
 dist/*
 !index.html
+!404.html
 !doGet.js
 tmp/*
 # lib/*
