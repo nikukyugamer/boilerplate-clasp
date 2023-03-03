@@ -44,3 +44,15 @@ function bar() {
   Foo.greeting()
 }
 ```
+
+# 注意点
+
+## 複数ファイルではコード実行の順番依存がある
+- 順番によっては undefined をレシーバにしてしまうことが起きうる
+  - https://zenn.dev/tacck/articles/20211218_gas
+  - `.clasp.json` に `filePushOrder` というプロパティで設定することはできるが継続的メンテが大変に面倒
+  - ここは人間が「考えながら」作るしかない
+    - ファイル名やディレクトリ名を工夫する
+
+## npm を使うときは `require` を使うこと
+- `const fs = require('fs')` のようにして用いる
