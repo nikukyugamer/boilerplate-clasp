@@ -1046,10 +1046,10 @@ cross-spawn@^7.0.2:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-css-functions-list@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/css-functions-list/-/css-functions-list-3.1.0.tgz#cf5b09f835ad91a00e5959bcfc627cd498e1321b"
-  integrity sha512-/9lCvYZaUbBGvYUgYGFJ4dcYiyqdhSjG7IPVluoV8A1ILjkF7ilmhp1OGUz8n+nmBcu0RNrQAzgD8B6FJbrt2w==
+css-functions-list@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/css-functions-list/-/css-functions-list-3.2.0.tgz#8290b7d064bf483f48d6559c10e98dc4d1ad19ee"
+  integrity sha512-d/jBMPyYybkkLVypgtGv12R+pIFw4/f/IHtCTxWpZc8ofTYOPigIgmA6vu5rMHartZC+WuXhBUHfnyNUIQSYrg==
 
 css-tree@^2.3.1:
   version "2.3.1"
@@ -2640,7 +2640,7 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.2.0:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.4.20, postcss@^8.4.21, postcss@^8.4.23, postcss@^8.4.24, postcss@^8.4.25:
+postcss@^8.4.20, postcss@^8.4.21, postcss@^8.4.23, postcss@^8.4.25:
   version "8.4.26"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.26.tgz#1bc62ab19f8e1e5463d98cf74af39702a00a9e94"
   integrity sha512-jrXHFF8iTloAenySjM/ob3gSj7pCu0Ji49hnjqzsgSRa50hkWCKD0HQ+gMNJkW38jBI68MpAAg7ZWwHwX8NMMw==
@@ -2929,14 +2929,7 @@ semver@^6.0.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
-semver@^7.3.4:
-  version "7.5.3"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.3.tgz#161ce8c2c6b4b3bdca6caadc9fa3317a4c4fe88e"
-  integrity sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==
-  dependencies:
-    lru-cache "^6.0.0"
-
-semver@^7.5.4:
+semver@^7.3.4, semver@^7.5.4:
   version "7.5.4"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
   integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
@@ -3153,9 +3146,9 @@ stylelint-scss@^5.0.0:
     postcss-value-parser "^4.2.0"
 
 stylelint@^15.0.0:
-  version "15.10.1"
-  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-15.10.1.tgz#93f189958687e330c106b010cbec0c41dcae506d"
-  integrity sha512-CYkzYrCFfA/gnOR+u9kJ1PpzwG10WLVnoxHDuBA/JiwGqdM9+yx9+ou6SE/y9YHtfv1mcLo06fdadHTOx4gBZQ==
+  version "15.10.2"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-15.10.2.tgz#0ee5a8371d3a2e1ff27fefd48309d3ddef7c3405"
+  integrity sha512-UxqSb3hB74g4DTO45QhUHkJMjKKU//lNUAOWyvPBVPZbCknJ5HjOWWZo+UDuhHa9FLeVdHBZXxu43eXkjyIPWg==
   dependencies:
     "@csstools/css-parser-algorithms" "^2.3.0"
     "@csstools/css-tokenizer" "^2.1.1"
@@ -3164,7 +3157,7 @@ stylelint@^15.0.0:
     balanced-match "^2.0.0"
     colord "^2.9.3"
     cosmiconfig "^8.2.0"
-    css-functions-list "^3.1.0"
+    css-functions-list "^3.2.0"
     css-tree "^2.3.1"
     debug "^4.3.4"
     fast-glob "^3.3.0"
@@ -3184,7 +3177,7 @@ stylelint@^15.0.0:
     micromatch "^4.0.5"
     normalize-path "^3.0.0"
     picocolors "^1.0.0"
-    postcss "^8.4.24"
+    postcss "^8.4.25"
     postcss-resolve-nested-selector "^0.1.1"
     postcss-safe-parser "^6.0.0"
     postcss-selector-parser "^6.0.13"
