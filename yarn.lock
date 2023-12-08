@@ -13,11 +13,11 @@
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
 "@babel/code-frame@^7.0.0":
-  version "7.22.13"
-  resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.22.13.tgz#e3c1c099402598483b7a8c46a721d1038803755e"
-  integrity sha512-XktuhWlJ5g+3TJXc5upd9Ks1HutSArik6jf2eAjYFyIOf4ej3RN+184cZbzDvbPnuTJIUhPKKJE3cIsYTiAT3w==
+  version "7.23.5"
+  resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.23.5.tgz#9009b69a8c602293476ad598ff53e4562e15c244"
+  integrity sha512-CgH3s1a96LipHCmSUmYFPwY7MNx8C3avkq7i4Wl3cfa662ldtUe4VM1TPXX70pfmrlWTb6jLqTYrZyT2ZTJBgA==
   dependencies:
-    "@babel/highlight" "^7.22.13"
+    "@babel/highlight" "^7.23.4"
     chalk "^2.4.2"
 
 "@babel/helper-validator-identifier@^7.22.20":
@@ -25,10 +25,10 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.22.20.tgz#c4ae002c61d2879e724581d96665583dbc1dc0e0"
   integrity sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==
 
-"@babel/highlight@^7.22.13":
-  version "7.22.20"
-  resolved "https://registry.yarnpkg.com/@babel/highlight/-/highlight-7.22.20.tgz#4ca92b71d80554b01427815e06f2df965b9c1f54"
-  integrity sha512-dkdMCN3py0+ksCgYmGG8jKeGA/8Tk+gJwSYYlFGxG5lmhfKNoAy004YpLxpS1W2J8m/EK2Ew+yOs9pVRwO89mg==
+"@babel/highlight@^7.23.4":
+  version "7.23.4"
+  resolved "https://registry.yarnpkg.com/@babel/highlight/-/highlight-7.23.4.tgz#edaadf4d8232e1a961432db785091207ead0621b"
+  integrity sha512-acGdbYSfp2WheJoJm/EBBBLh/ID8KDc64ISZ9DYtBmC8/Q204PZJLHyzeB5qMzJ5trcOkybd78M4x2KWsUq++A==
   dependencies:
     "@babel/helper-validator-identifier" "^7.22.20"
     chalk "^2.4.2"
@@ -3164,9 +3164,9 @@ stylelint-scss@^5.3.0:
     postcss-value-parser "^4.2.0"
 
 stylelint@^16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-16.0.0.tgz#974a56d27b403b3a8aa8552523d6716197d20d14"
-  integrity sha512-AKwRjOL+a+QYIrjQLaY1uqsxEd2I/QlYvExelWxJ5hbobfBNzM0hkIc6d+CSVJP6KaVme9D3Jlr7VIXfXmHDKA==
+  version "16.0.1"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-16.0.1.tgz#613ad8841f78e10bef48bf953d759e0f73d3e153"
+  integrity sha512-nPO7f7JBxX0gPwdQs1fBQL+b0PabHykxSQ9HtpobbtV7pe2lb/nmlqxKepPUwHJTi9P9iu+Hkwt1mdmOnkkTVw==
   dependencies:
     "@csstools/css-parser-algorithms" "^2.3.2"
     "@csstools/css-tokenizer" "^2.2.1"
