@@ -6,7 +6,7 @@
   "bugs": {},
   "devDependencies": {
     "@google/clasp": "2.4.2",
-    "@types/google-apps-script": "1.0.86",
+    "@types/google-apps-script": "1.0.87",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
