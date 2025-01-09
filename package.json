@@ -5,7 +5,7 @@
   "author": "Osamu Takiya <takiya@toran.sakura.ne.jp>",
   "bugs": {},
   "devDependencies": {
-    "@google/clasp": "2.4.2",
+    "@google/clasp": "2.5.0",
     "@types/google-apps-script": "1.0.91",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
