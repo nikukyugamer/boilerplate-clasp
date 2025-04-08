@@ -61,6 +61,6 @@ jobs:
       - name: TypeScript をコンパイルする ($ yarn build)
         run: |
           npx tsc
-      # - name: ビルドする
-      #   run: |
-      #     vite build
+      - name: ビルドする
+        run: |
+          npx vite build
