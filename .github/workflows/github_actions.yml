@@ -1,8 +1,4 @@
-name: boilerplate-clasp
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+name: Clasp のボイラープレート
 
 on:
   push:
@@ -12,8 +8,24 @@ on:
       - 'v*.*.*'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  LANG: ja_JP.UTF-8
+  RUBY_YJIT_ENABLE: 1
+  TZ: Asia/Tokyo
+
+permissions:
+  contents: read
+
 jobs:
-  eiyuden_crm_frontend:
+  boilerplate_clasp:
     name: boilerplate-clasp
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -27,31 +39,28 @@ jobs:
           echo '${{ toJson(secrets) }}'
           echo '${{ toJson(github) }}'
           echo '${{ toJson(env) }}'
-      - name: （デバッグ用）env を確認する
+      - name: $ git clone する
+        # https://github.com/actions/checkout/releases
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: （デバッグ用）カレントディレクトリを確認する
         run: |
-          echo '${{ toJson(env) }}'
-      - name: コードをチェックアウトする
-        uses: actions/checkout@v4
+          pwd
+          ls -la
       - name: Node.js のセットアップを行う
-        uses: actions/setup-node@v4
+        # https://github.com/actions/setup-node/releases
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
           node-version-file: '.node-version'
           cache: yarn
           cache-dependency-path: yarn.lock
-      - name: Node のパッケージをインストールする
+      - name: package.json の依存関係をインストールする ($ yarn install)
         run: |
           yarn install
-      - name: （デバッグ用）各種バージョンを確認する
-        run: |
-          echo "gh version: $(gh version)"
-          echo "docker --version: $(docker --version)"
-          echo "docker-compose --version: $(docker-compose --version)"
-          echo "node --version: $(node --version)"
-          echo "npm --version: $(npm --version)"
-          echo "npm list: $(npm list)"
-          echo "npm list -g: $(npm list -g)"
-          echo "yarn --version: $(yarn --version)
-          echo "npx --version: $(npx --version)
-      - name: TypeScript をコンパイルする
+      - name: TypeScript をコンパイルする ($ yarn build)
         run: |
           npx tsc
+      # - name: ビルドする
+      #   run: |
+      #     vite build
